@@ -1,0 +1,13 @@
+.healthBar {
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    font-size: 0;
+    -unity-font-style: normal;
+}
