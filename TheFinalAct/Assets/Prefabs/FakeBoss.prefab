@@ -43,16 +43,9 @@ GameObject:
   - component: {fileID: 8769691922520356017}
   - component: {fileID: 7355620783991066507}
   - component: {fileID: 4938776233017700173}
-  - component: {fileID: 8622509046935175138}
-  - component: {fileID: 6611790372511912802}
-  - component: {fileID: 2273572766485131486}
-  - component: {fileID: 5237629646062823069}
-  - component: {fileID: 4830713549733049118}
-  - component: {fileID: 2448683876714886767}
-  - component: {fileID: 930610115033033656}
   - component: {fileID: 7540357868903570098}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: FakeBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 1090609761409754516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 12.693586, y: 5, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -105,7 +98,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2e41f95b49560e14e837600009e1e092, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150,125 +143,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8622509046935175138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090609761409754516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790794ba503ff904095f7e22ef602b52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 1
-  bossModel: {fileID: 1090609761409754516}
-  illusions: []
-  teleportInterval: 3
-  teleportMinX: -8
-  teleportMaxX: 8
---- !u!114 &6611790372511912802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090609761409754516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 479b957a77b339f4382733ef3ca92a5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 0
-  balls: []
---- !u!114 &2273572766485131486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090609761409754516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37fd6c5af7090454eb86bb18791b71ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 0
-  cardPrefab: {fileID: 0}
-  shootInterval: 0.5
---- !u!114 &5237629646062823069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090609761409754516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6549415be1f657f47b344676fdd80c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentHealth: 0
-  phase2Threshold: 0.7
-  phase3Threshold: 0.4
-  healthSlider: {fileID: 0}
-  healthBarFill: {fileID: 0}
-  onBossDeath:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &4830713549733049118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090609761409754516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4caab429f46504aaa321756b2f4857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vanishingTricks: {fileID: 8622509046935175138}
-  cardChaos: {fileID: 2273572766485131486}
-  followTheBall: {fileID: 6611790372511912802}
-  currentPhase: 1
---- !u!114 &2448683876714886767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090609761409754516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11a4e61fb5a36684c99698d4d09b0af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contactDamage: 20
-  attackRange: 5
---- !u!114 &930610115033033656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090609761409754516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6549415be1f657f47b344676fdd80c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentHealth: 0
-  phase2Threshold: 0.7
-  phase3Threshold: 0.4
-  healthSlider: {fileID: 0}
-  healthBarFill: {fileID: 0}
-  onBossDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &7540357868903570098
 Rigidbody:
   m_ObjectHideFlags: 0

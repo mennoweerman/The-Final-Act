@@ -72,6 +72,13 @@ public class BossSpawnItem : MonoBehaviour
             }
             
             bossObject.transform.localScale = new Vector3(5f, 5f, 5f);
+            
+            // Koppel de health slider aan de boss
+            BossHealth bossHealth = bossObject.GetComponent<BossHealth>();
+            if (bossHealth != null && BossHealthSlider != null)
+            {
+                bossHealth.healthSlider = BossHealthSlider;
+            }
         }
         
         if (bossPhaseManager != null)

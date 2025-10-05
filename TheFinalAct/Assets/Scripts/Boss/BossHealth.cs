@@ -26,6 +26,18 @@ public class BossHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         phaseManager = GetComponent<BossPhaseManager>();
+        
+        // Als healthSlider niet is ingesteld, probeer het te vinden
+        if (healthSlider == null)
+        {
+            GameObject sliderObject = GameObject.Find("BossHealthSlider");
+            if (sliderObject != null)
+            {
+                healthSlider = sliderObject.GetComponent<Slider>();
+            }
+        }
+        
+        UpdateHealthUI();
     }
 
     public void TakeDamage(float amount)

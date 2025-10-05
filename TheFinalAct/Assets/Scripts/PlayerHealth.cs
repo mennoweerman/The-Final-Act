@@ -43,7 +43,6 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        Debug.Log($"🩸 Player damage: {amount} (HP: {currentHealth}/{maxHealth})");
         
         UpdateHealthUI();
 
