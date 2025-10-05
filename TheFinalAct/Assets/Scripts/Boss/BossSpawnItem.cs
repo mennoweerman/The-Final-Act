@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossSpawnItem : MonoBehaviour
 {
     [Header("Boss Settings")]
     public GameObject bossObject;
+    public Slider BossHealthSlider;
     private BossPhaseManager bossPhaseManager;
     public Transform bossSpawnPosition;
     
@@ -32,6 +34,10 @@ public class BossSpawnItem : MonoBehaviour
         if (playerInRange && !bossSpawned && Input.GetKeyDown(interactionKey))
         {
             SpawnBoss();
+
+            BossHealthSlider.gameObject.SetActive(true);
+            bossObject.gameObject.SetActive(true);
+            
         }
     }
 

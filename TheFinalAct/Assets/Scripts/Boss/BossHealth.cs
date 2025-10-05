@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class BossHealth : MonoBehaviour
     [Header("Phase Thresholds (in %)")]
     public float phase2Threshold = 0.7f; // bij 70% HP naar CardChaos
     public float phase3Threshold = 0.4f; // bij 40% HP naar FollowTheBall
+
+    [Header("UI Elements")]
+    public Slider healthSlider;
+    public Image healthBarFill;
 
     public UnityEvent onBossDeath;
 
@@ -28,9 +33,8 @@ public class BossHealth : MonoBehaviour
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        Debug.Log($"💥 Boss damage: {amount} (HP: {currentHealth}/{maxHealth})");
-
         CheckPhaseTransitions();
+        UpdateHealthUI();
 
         if (currentHealth <= 0)
         {
@@ -57,9 +61,16 @@ public class BossHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("☠️ Boss verslagen!");
-        onBossDeath?.Invoke();
-        // Je kunt hier een animatie starten, loot spawnen, arena unlocken etc.
         Destroy(gameObject, 2f);
+    }
+
+    void UpdateHealthUI()
+    {
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.minValue = 0;
+            healthSlider.value = currentHealth;
+        }
     }
 }
