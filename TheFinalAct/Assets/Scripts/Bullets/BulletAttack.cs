@@ -35,6 +35,12 @@ public class BulletAttack : MonoBehaviour
 
     private void TryDamage(Collider target)
     {
+        var ballHitDetector = target.GetComponent<BallHitDetector>();
+        if (ballHitDetector != null)
+        {
+            return;
+        }
+        
         // Check of target een health script heeft
         var playerHealth = target.GetComponent<PlayerHealth>();
         var bossHealth = target.GetComponent<BossHealth>();

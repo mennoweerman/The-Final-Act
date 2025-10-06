@@ -71,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         isDead = true;
-        Debug.Log("💀 Speler is dood!");
+
         onPlayerDeath?.Invoke();
 
         GetComponent<PlayerController>().enabled = false;

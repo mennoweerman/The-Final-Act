@@ -46,7 +46,7 @@ public class BossSpawnItem : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("Press E to start boss fight!");
+
         }
     }
 
@@ -83,10 +83,12 @@ public class BossSpawnItem : MonoBehaviour
         
         if (bossPhaseManager != null)
         {
-            bossPhaseManager.StartPhase(BossPhaseManager.BossPhase.VanishingTricks);
+            bossPhaseManager.StartPhase(BossPhase.VanishingTricks);
         }
         
         bossSpawned = true;
-        Debug.Log("Boss fight started! First phase: VanishingTricks");
+        
+        // Verberg/vernietig de spawn item
+        gameObject.SetActive(false);
     }
 }

@@ -21,6 +21,7 @@ public class BossHealth : MonoBehaviour
     private BossPhaseManager phaseManager;
     private bool phase2Started;
     private bool phase3Started;
+    private bool isStunned = false;
 
     void Start()
     {
@@ -42,6 +43,15 @@ public class BossHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (BossPhaseManager.Instance != null)
+        {
+            BossPhase current = BossPhaseManager.Instance.currentPhase;
+
+            if (current == BossPhase.FollowTheBall)
+            {
+                if (!isStunned) return;
+            }
+        }
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
@@ -61,19 +71,34 @@ public class BossHealth : MonoBehaviour
         if (!phase2Started && hpPercent <= phase2Threshold)
         {
             phase2Started = true;
-            phaseManager.StartPhase(BossPhaseManager.BossPhase.CardChaos);
+            phaseManager.StartPhase(BossPhase.CardChaos);
         }
 
         if (!phase3Started && hpPercent <= phase3Threshold)
         {
             phase3Started = true;
-            phaseManager.StartPhase(BossPhaseManager.BossPhase.FollowTheBall);
+            phaseManager.StartPhase(BossPhase.FollowTheBall);
         }
     }
 
     void Die()
     {
         Destroy(gameObject, 2f);
+    }
+
+    public void SetStunned(bool stunned, float duration = 0f)
+    {
+        isStunned = stunned;
+        if (stunned && duration > 0f)
+        {
+            StartCoroutine(StunTimer(duration));
+        }
+    }
+    
+    private System.Collections.IEnumerator StunTimer(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isStunned = false;
     }
 
     void UpdateHealthUI()

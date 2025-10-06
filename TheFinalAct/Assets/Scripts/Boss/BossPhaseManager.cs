@@ -1,14 +1,16 @@
 using UnityEngine;
 
+public enum BossPhase
+{
+    None,
+    VanishingTricks,
+    CardChaos,
+    FollowTheBall
+}
+
 public class BossPhaseManager : MonoBehaviour
 {
-    public enum BossPhase
-    {
-        None,
-        VanishingTricks,
-        CardChaos,
-        FollowTheBall
-    }
+    public static BossPhaseManager Instance { get; private set; }
 
     [Header("Phase Scripts")]
     public VanishingTricks vanishingTricks;
@@ -17,13 +19,29 @@ public class BossPhaseManager : MonoBehaviour
 
     [Header("Current State (ReadOnly)")]
     public BossPhase currentPhase = BossPhase.None;
+    
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Update()
     {
-        // Debug keys voor snel testen
         if (Input.GetKeyDown(KeyCode.Alpha1)) StartPhase(BossPhase.VanishingTricks);
         if (Input.GetKeyDown(KeyCode.Alpha2)) StartPhase(BossPhase.CardChaos);
         if (Input.GetKeyDown(KeyCode.Alpha3)) StartPhase(BossPhase.FollowTheBall);
+    }
+
+    public void SetPhase(BossPhase newPhase)
+    {
+        currentPhase = newPhase;
     }
 
     public void StartPhase(BossPhase newPhase)
@@ -44,10 +62,10 @@ public class BossPhaseManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"🔥 Phase started: {newPhase}");
+
     }
 
-    void EndAllPhases()
+    public void EndAllPhases()
     {
         vanishingTricks.EndPhase();
         cardChaos.EndPhase();

@@ -20,20 +20,13 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
-        if (bulletPrefab == null || shootPoint == null)
-        {
-            Debug.LogWarning("❌ BulletPrefab of ShootPoint niet ingesteld!");
-            return;
-        }
+        if (bulletPrefab == null || shootPoint == null) return;
 
-        // ✅ Richting = camera forward
         Transform cam = Camera.main.transform;
         Vector3 direction = cam.forward;
 
-        // Spawn de bullet in camera-richting
         GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.LookRotation(direction));
-
-        // Extra: als je meteen velocity wilt zetten via Rigidbody (handig bij physics)
+        bullet.tag = "Bullet";
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {

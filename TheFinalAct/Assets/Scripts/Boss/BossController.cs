@@ -23,13 +23,9 @@ public class BossController : MonoBehaviour
     {
         if (player == null) return;
 
-        // Boss kijkt naar speler
         Vector3 dir = player.position - transform.position;
-
-        // (Optioneel) Als speler dichtbij is → doe iets
         if (Vector2.Distance(transform.position, player.position) < attackRange)
         {
-            // Start animatie of aanval
         }
     }
 
