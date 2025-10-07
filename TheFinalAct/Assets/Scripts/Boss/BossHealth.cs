@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
@@ -83,7 +84,16 @@ public class BossHealth : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject, 2f);
+        StartCoroutine(HandleBossDeath());
+    }
+    
+    private System.Collections.IEnumerator HandleBossDeath()
+    {
+        // Wacht 2 seconden voor dramatisch effect
+        yield return new WaitForSeconds(2f);
+        
+        // Laad de huidige scene opnieuw
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void SetStunned(bool stunned, float duration = 0f)
